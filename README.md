@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# OneFinity Token Transfer App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Une application React permettant de se connecter à MetaMask, de basculer vers le réseau **OneFinity Testnet**, et d'envoyer des tokens ONE via des transactions EVM. L'application supporte l'ajout automatique du réseau **OneFinity Testnet** à MetaMask si celui-ci n'est pas déjà configuré.
 
-## Available Scripts
+## Fonctionnalités
 
-In the project directory, you can run:
+- Connexion à MetaMask
+- Changement automatique vers le **OneFinity Testnet** (si non connecté)
+- Ajout du **OneFinity Testnet** à MetaMask si non configuré
+- Envoi de tokens ONE à une adresse EVM spécifiée
+- Exécution automatique de transactions toutes les 10 secondes
+- Affichage des informations sur la transaction et du solde de l'utilisateur
 
-### `npm start`
+## Prérequis
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Node.js](https://nodejs.org/) version 18+
+- [MetaMask](https://metamask.io/) extension pour navigateur installée
+- Compte de test sur le réseau **OneFinity Testnet**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clonez ce dépôt :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/bdsalocin/Auto-send-onefinity-transaction.git
+   ```
 
-### `npm run build`
+2. Accédez au répertoire du projet :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   cd Auto-send-onefinity-transaction
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Installez les dépendances :
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Configuration
 
-### `npm run eject`
+L'application est configurée pour fonctionner avec le réseau **OneFinity Testnet**. Voici les détails du réseau :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Nom du réseau** : OneFinity Testnet
+- **URL RPC** : `https://testnet-rpc.onefinity.network`
+- **Chain ID** : `999987`
+- **Symbole de la monnaie** : `ONE`
+- **Block Explorer URL** : `https://testnet-explorer.onefinity.network/`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Utilisation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Démarrez l'application React :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   npm start
+   ```
 
-## Learn More
+2. Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour afficher l'application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Suivez ces étapes dans l'interface utilisateur :
+   - Cliquez sur **Connect Wallet** pour vous connecter à votre portefeuille MetaMask.
+   - Si vous n'êtes pas sur le réseau **OneFinity Testnet**, l'application vous demandera de basculer ou d'ajouter ce réseau.
+   - Entrez l'adresse EVM du destinataire dans le champ **Receiver Address**.
+   - Cliquez sur **Start** pour envoyer des transactions périodiquement ou sur **Send Single Transaction** pour envoyer une transaction unique.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Fonctionnalités supplémentaires
 
-### Code Splitting
+### Gestion du réseau
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Si MetaMask n'est pas connecté au réseau **OneFinity Testnet**, l'application demandera à l'utilisateur de basculer vers ce réseau ou de l'ajouter s'il n'existe pas encore.
 
-### Analyzing the Bundle Size
+### Informations sur la transaction
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Après chaque transaction, l'application affichera :
+  - Le **hash** de la transaction
+  - Le **gas utilisé**
+  - Le **coût du gas** en ONE
+  - Le **solde actuel** du compte connecté
 
-### Making a Progressive Web App
+## Dépendances
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+L'application utilise les dépendances suivantes :
 
-### Advanced Configuration
+- [React](https://reactjs.org/)
+- [Web3.js](https://web3js.readthedocs.io/)
+- [Ant Design](https://ant.design/) pour l'interface utilisateur
+- [MetaMask](https://metamask.io/) pour la gestion du portefeuille
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Scripts npm
 
-### Deployment
+- **`npm start`** : Démarre l'application en mode développement
+- **`npm run build`** : Génère les fichiers de production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Problèmes connus
 
-### `npm run build` fails to minify
+- Si MetaMask est installé mais ne fonctionne pas correctement, assurez-vous que l'extension est activée et que vous utilisez un navigateur compatible comme Chrome ou Firefox.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributions
+
+Les contributions à ce projet sont les bienvenues. Vous pouvez soumettre des pull requests ou ouvrir des issues pour signaler des bugs ou suggérer de nouvelles fonctionnalités.
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
